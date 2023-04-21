@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="BusBookingProject.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Dịch vụ đặt xe du lịch Nhóm 4</title>
+    <link rel="icon" href="https://travelcar.vn/img/travelcar-logo-title.png" type="image/x-icon" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container" style="width: 100%; background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%); padding: 0 50px">
+                <div class="navbar-header">
+                    <a href="Default.aspx" class="navbar-brand">
+                        <img src="https://travelcar.vn/img/travelcar-logo-title.png" alt="logo"/>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">                        
+                        <% if(Session["UserName"]!=null){ %>                        
+                        <li><a runat="server" href="BusDetails.aspx" id="lnkComplaint" style="font-weight: bold; padding: 24px; font-size: 16px">Thêm xe</a></li>
+                        <li><a runat="server" href="RouteDetails.aspx" id="A2" style="font-weight: bold; padding: 24px; font-size: 16px">Quản lí tuyến đường</a></li>
+                         <li><a runat="server" href="BookingReport.aspx" id="A4" style="font-weight: bold; padding: 24px; font-size: 16px">Quản lí đặt vé</a></li>
+                         <li><a runat="server" href="BusDetailsReport.aspx" id="A3" visible="true" style="font-weight: bold; padding: 24px; font-size: 16px">Quản lí xe</a></li>
+                        <%} %>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if(Session["UserName"]==null){ %>
+                        <li><a runat="server" href="../Default.aspx" style="font-weight: bold; padding: 24px; font-size: 16px" title="Login">Trang chủ</a></li>
+                        <li><a runat="server" href="AdminLogin.aspx" id="linkLogin" style="font-weight: bold; padding: 24px; font-size: 16px" title="Login">Admin Đăng nhập</a></li>
+                        <%}else{ %>
+                        <li><a runat="server" href="../Default.aspx" style="font-weight: bold; padding: 24px; font-size: 16px" title="Login">Trang chủ</a></li>
+                        <li><a runat="server" href="#" title="Manage your account" id="lnkWelcome" style="font-weight: bold; padding: 24px; font-size: 16px">Xin chào, <%: Session["UserName"]  %>!</a></li>
+                        <li>
+                            <a runat="server" href="AdminLogin.aspx" id="A1" style="font-weight: bold; padding: 24px; font-size: 16px">Đăng xuất</a></li>
+                        </li>
+                        <%} %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>        
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.4.1.js"></script>
+    </form>
+    <footer class="navbar navbar-default navbar-static-top" style="line-height:48px; position: fixed; bottom: 0; width: 100%; text-align: center; font-weight: bold; margin: 0">
+        <p style="margin:0; font-size: 16px">Dịch vụ đặt xe du lịch Nhóm 4</p>
+    </footer>
+</body>
+</html>
